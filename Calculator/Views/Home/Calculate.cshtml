@@ -1,0 +1,28 @@
+﻿@model Calculator.Models.CalcResult
+@{
+    ViewBag.Title = "Calculator";
+}
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Calculator</legend>
+        <p>First Number
+        @Html.EditorFor(model => model.arg1)</p>
+        <p>
+            Action
+            @Html.DropDownListFor(model => model.operation, new SelectList(new string[] { "+", "-", "/", "*" }), "actions")
+        </p>
+        <p>
+            Second Number
+            @Html.EditorFor(model => model.arg2)
+        </p>
+        <p>
+            <input type="submit" value="Calculate" />
+        </p>
+    </fieldset>
+}
+
+
+
