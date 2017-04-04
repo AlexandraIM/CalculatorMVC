@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Log";
+}
+
+<h2>Log</h2>
+<table>
+    <tr>
+        <td>Time</td>
+        <td>Operation</td>
+        <td>Result</td>
+    </tr>
+    @foreach (var b in ViewBag.Results)
+            {
+        <tr>
+            <td><p>@b.operationTime</p></td>
+            <td><p>@b.operation</p></td>
+            <td><p>@b.result</p></td>
+        </tr>
+    }
+</table>
+
