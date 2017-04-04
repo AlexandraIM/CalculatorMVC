@@ -20,9 +20,16 @@ namespace Calculator.Controllers
         }
         //обработка результата калькулятора и сохранение в базу логирования
         [HttpPost]
-        public ActionResult Calculate(CalcResult result)
+        public ActionResult Calculate(decimal arg1, string operation, decimal arg2)
         {
-            
+            CalcResult result = new CalcResult() {
+                arg1 = arg1,
+                arg2 = arg2,
+                operation = operation,
+                operationTime = DateTime.Now.TimeOfDay,
+                result = arg1 + arg2
+
+            };
             if (ModelState.IsValid)
             {
                 db.CalcResults.Add(result);

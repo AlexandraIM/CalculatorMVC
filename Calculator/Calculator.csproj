@@ -151,6 +151,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704041812454_InitialCreate.cs" />
+    <Compile Include="Migrations\201704041812454_InitialCreate.Designer.cs">
+      <DependentUpon>201704041812454_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704042043343_MigrateResultDb.cs" />
+    <Compile Include="Migrations\201704042043343_MigrateResultDb.Designer.cs">
+      <DependentUpon>201704042043343_MigrateResultDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CalcResult.cs" />
     <Compile Include="Models\ClacResultContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -209,6 +218,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704041812454_InitialCreate.resx">
+      <DependentUpon>201704041812454_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704042043343_MigrateResultDb.resx">
+      <DependentUpon>201704042043343_MigrateResultDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

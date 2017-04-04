@@ -22,8 +22,8 @@ namespace Calculator.Models
         [Display(Name = "Operation")]
         public string operation { get; set; }
         // время операции
-        [DataType(DataType.Time)]
-        public DateTime operationTime { get; set; }
+        
+        public TimeSpan operationTime { get; set; }
         // результат операции
         public decimal result { get; set; }
     }
