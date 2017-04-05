@@ -47,7 +47,7 @@ namespace Calculator.Controllers
                 ViewBag.Result = ex.Message;
                 ModelState.Clear();
             }
-            return View();
+            return PartialView("_Result");
         }
         
         public ActionResult Log()

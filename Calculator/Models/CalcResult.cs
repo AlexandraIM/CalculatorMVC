@@ -22,7 +22,6 @@ namespace Calculator.Models
         [Display(Name = "Operation")]
         public Operations operation { get; set; }
         // время операции
-        
         public string operationTime { get; set; }
         // результат операции
         public int result { get; set; }
