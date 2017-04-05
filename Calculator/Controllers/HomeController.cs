@@ -40,6 +40,7 @@ namespace Calculator.Controllers
                     db.SaveChanges();
                     ViewBag.Result = result;
                     ModelState.Clear();
+                    
                     return View();
                 }
             }catch(Exception ex)
@@ -55,6 +56,7 @@ namespace Calculator.Controllers
         {
             // получаем из бд все объекты Results
             IEnumerable<CalcResult> results = db.CalcResults;
+            
             // передаем все объекты в динамическое свойство Results в ViewBag
             ViewBag.Results = results;
             // возвращаем представление
