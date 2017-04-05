@@ -13,18 +13,18 @@ namespace Calculator.Models
         // первый аргумент
         [Required]
         [Display(Name ="First Argument")]
-        public decimal arg1 { get; set; }
+        public int arg1 { get; set; }
         // второй аргумент
         [Required]
         [Display(Name = "Second Argument")]
-        public decimal arg2 { get; set; }
+        public int arg2 { get; set; }
         // операция вычисления
         [Display(Name = "Operation")]
-        public string operation { get; set; }
+        public Operations operation { get; set; }
         // время операции
         
         public string operationTime { get; set; }
         // результат операции
-        public decimal result { get; set; }
+        public int result { get; set; }
     }
 }

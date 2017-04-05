@@ -162,9 +162,18 @@
     <Compile Include="Migrations\201704051117364_MigrateDb.Designer.cs">
       <DependentUpon>201704051117364_MigrateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704051550490_MigrateDb1.cs" />
+    <Compile Include="Migrations\201704051550490_MigrateDb1.Designer.cs">
+      <DependentUpon>201704051550490_MigrateDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704051753066_MigrateDb2.cs" />
+    <Compile Include="Migrations\201704051753066_MigrateDb2.Designer.cs">
+      <DependentUpon>201704051753066_MigrateDb2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CalcResult.cs" />
     <Compile Include="Models\ClacResultContext.cs" />
+    <Compile Include="Models\Operations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +205,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -221,6 +232,7 @@
     <Content Include="Views\Home\Log.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Home\_Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -237,6 +249,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704051117364_MigrateDb.resx">
       <DependentUpon>201704051117364_MigrateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704051550490_MigrateDb1.resx">
+      <DependentUpon>201704051550490_MigrateDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704051753066_MigrateDb2.resx">
+      <DependentUpon>201704051753066_MigrateDb2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

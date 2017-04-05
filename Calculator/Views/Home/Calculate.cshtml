@@ -1,47 +1,52 @@
-﻿@model Calculator.Models.CalcResult
-
+﻿
+@model Calculator.Models.CalcResult
+@using Calculator.Models
 @{
     ViewBag.Title = "Calculate";
 }
 
-<h2>Calculate</h2>
+    <h2>Calculate</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.Label("arg1","First Argument", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Editor("arg1", new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("operation", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("operation", new List<SelectListItem>() { new SelectListItem { Text = "+", Value = "addition" }, new SelectListItem { Text = "-", Value = "subtraction" }, new SelectListItem { Text = "*", Value = "multiplication" }, new SelectListItem { Text = "/", Value = "division" } })
-</div>
-        </div>
-        <div class="form-group">
-            @Html.Label("arg2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Editor("arg2", new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
+    @using (Ajax.BeginForm("Calculate", new AjaxOptions { UpdateTargetId = "result" }))
+    {
+        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Calculate" class="btn btn-default" />
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("arg1", "First Argument", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("arg1", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("operation", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("operation", EnumHelper.GetSelectList(typeof(Operations)))
+
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("arg2", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Editor("arg2", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Calculate" class="btn btn-default" id="calculate" />
+                </div>
             </div>
         </div>
+    }
+
+
+
+    <div>
+        <p>Result: <span id="result"></span></p>
     </div>
-}
-
-<div>
-    <p>Result: <span>@ViewBag.Result</span></p>
-</div>
 

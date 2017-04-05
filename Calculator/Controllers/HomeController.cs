@@ -20,11 +20,11 @@ namespace Calculator.Controllers
         }
         //обработка результата калькулятора и сохранение в базу логирования
         [HttpPost]
-        public ActionResult Calculate(decimal arg1, string operation, decimal arg2)
+        public ActionResult Calculate(int arg1,Operations operation, int arg2)
         {
             try
             {
-                decimal result = Result(arg1, arg2, operation);
+                int result = Result(arg1, arg2, operation);
 
                 CalcResult calcResult = new CalcResult()
                 {
@@ -40,14 +40,12 @@ namespace Calculator.Controllers
                     db.SaveChanges();
                     ViewBag.Result = result;
                     ModelState.Clear();
-                    
-                    return View();
+                    return PartialView("_Result");
                 }
             }catch(Exception ex)
             {
                 ViewBag.Result = ex.Message;
                 ModelState.Clear();
-                
             }
             return View();
         }
@@ -55,7 +53,7 @@ namespace Calculator.Controllers
         public ActionResult Log()
         {
             // получаем из бд все объекты Results
-            IEnumerable<CalcResult> results = db.CalcResults;
+            IEnumerable<CalcResult> results = db.CalcResults.OrderByDescending(p => p.Id).Take(10);
             
             // передаем все объекты в динамическое свойство Results в ViewBag
             ViewBag.Results = results;
@@ -63,16 +61,16 @@ namespace Calculator.Controllers
             return View();
         }
 
-        private decimal Result(decimal argument1, decimal argument2, string operation)
+        private int Result(int argument1, int argument2, Operations operation)
         {
             switch (operation)
             {
-                case "addition": return argument1 + argument2; 
-                case "subtraction": return argument1 - argument2;
-                case "multiplication": return argument1 * argument2;
-                case "division": return argument1 / argument2; 
+                case Operations.Add: return argument1 + argument2;
+                case Operations.Subtract: return argument1 - argument2;
+                case Operations.Multiply: return argument1 * argument2;
+                case Operations.Divide: return argument1 / argument2;
                 default: return 0;
-                   
+
             }
         }
     }
