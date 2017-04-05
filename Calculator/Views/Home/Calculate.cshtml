@@ -23,7 +23,7 @@
         <div class="form-group">
             @Html.Label("operation", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("operation", new List<SelectListItem>() { new SelectListItem { Text = "+", Value = "0" }, new SelectListItem { Text = "-", Value = "1" }, new SelectListItem { Text = "*", Value = "2" }, new SelectListItem { Text = "/", Value = "3" } });
+                @Html.DropDownList("operation", new List<SelectListItem>() { new SelectListItem { Text = "+", Value = "addition" }, new SelectListItem { Text = "-", Value = "subtraction" }, new SelectListItem { Text = "*", Value = "multiplication" }, new SelectListItem { Text = "/", Value = "division" } });
 </div>
         </div>
         <div class="form-group">
@@ -41,4 +41,7 @@
     </div>
 }
 
+<div>
+    <p>Result: <span>@ViewBag.Result</span></p>
+</div>
 
