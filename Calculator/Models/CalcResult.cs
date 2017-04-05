@@ -23,7 +23,7 @@ namespace Calculator.Models
         public string operation { get; set; }
         // время операции
         
-        public TimeSpan operationTime { get; set; }
+        public string operationTime { get; set; }
         // результат операции
         public decimal result { get; set; }
     }

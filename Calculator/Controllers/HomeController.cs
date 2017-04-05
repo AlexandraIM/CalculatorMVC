@@ -31,7 +31,7 @@ namespace Calculator.Controllers
                     arg1 = arg1,
                     arg2 = arg2,
                     operation = operation,
-                    operationTime = DateTime.Now.TimeOfDay,
+                    operationTime = DateTime.Now.ToString("HH:mm:ss"),
                     result = result
                 };
                 if (ModelState.IsValid)
