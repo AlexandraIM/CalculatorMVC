@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Calculator.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Calculator.Models;
 using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Calculator.Controllers
 {
@@ -18,14 +17,16 @@ namespace Calculator.Controllers
         {
             return View();
         }
+
         //обработка результата калькулятора и сохранение в базу логирования
         [HttpPost]
         public ActionResult Calculate(int arg1,Operations operation, int arg2)
         {
             try
             {
+                //расчет результата
                 int result = Result(arg1, arg2, operation);
-
+                //создание екземпляра для базы данных
                 CalcResult calcResult = new CalcResult()
                 {
                     arg1 = arg1,
@@ -34,19 +35,22 @@ namespace Calculator.Controllers
                     operationTime = DateTime.Now.ToString("HH:mm:ss"),
                     result = result
                 };
+                //запись данных в базу
                 if (ModelState.IsValid)
                 {
                     db.CalcResults.Add(calcResult);
                     db.SaveChanges();
                     ViewBag.Result = result;
                     ModelState.Clear();
-                    return PartialView("_Result");
+                    
                 }
             }catch(Exception ex)
             {
+                //ошибок
                 ViewBag.Result = ex.Message;
                 ModelState.Clear();
             }
+            //вывод результата 
             return PartialView("_Result");
         }
         
@@ -60,7 +64,7 @@ namespace Calculator.Controllers
             // возвращаем представление
             return View();
         }
-
+        //вспомогательный метод для расчета результата
         private int Result(int argument1, int argument2, Operations operation)
         {
             switch (operation)
